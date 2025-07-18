@@ -3,135 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal</title>
+    <title>Nosso Cantinho</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Biblioteca de ícones Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
-        /* Importa a fonte monoespaçada Fira Code */
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+        /* Importa as fontes do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
         
         body {
-            font-family: 'Fira Code', monospace;
-            /* Fundo escuro com uma textura de ruído sutil para um look "low-tech" */
-            background-color: #18181b; /* bg-zinc-900 */
-            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"%3E%3Cg fill="none" stroke="%2327272a" stroke-width="1"%3E%3Cpath d="M0 0h800v800H0z"/%3E%3Cpath d="M-100 100h1000v100H-100zM-100 300h1000v100H-100zM-100 500h1000v100H-100zM-100 700h1000v100H-100zM100-100v1000h100V-100zM300-100v1000h100V-100zM500-100v1000h100V-100zM700-100v1000h100V-100z"/%3E%3C/g%3E%3Cg fill="%233f3f46"%3E%3Ccircle cx="100" cy="100" r="2"/%3E%3Ccircle cx="300" cy="100" r="2"/%3E%3Ccircle cx="500" cy="100" r="2"/%3E%3Ccircle cx="700" cy="100" r="2"/%3E%3Ccircle cx="100" cy="300" r="2"/%3E%3Ccircle cx="300" cy="300" r="2"/%3E%3Ccircle cx="500" cy="300" r="2"/%3E%3Ccircle cx="700" cy="300" r="2"/%3E%3Ccircle cx="100" cy="500" r="2"/%3E%3Ccircle cx="300" cy="500" r="2"/%3E%3Ccircle cx="500" cy="500" r="2"/%3E%3Ccircle cx="700" cy="500" r="2"/%3E%3Ccircle cx="100" cy="700" r="2"/%3E%3Ccircle cx="300" cy="700" r="2"/%3E%3Ccircle cx="500" cy="700" r="2"/%3E%3Ccircle cx="700" cy="700" r="2"/%3E%3C/g%3E%3C/svg%3E');
-            background-size: 200px;
-            opacity: 0.8;
+            font-family: 'Poppins', sans-serif;
+            /* NOVO: Fundo em degradê lilás */
+            background-image: linear-gradient(to top left, #f5f3ff, #d8b4fe);
         }
 
-        /* Estilo da barra de rolagem para combinar com o tema */
+        /* NOVA: Classe para a fonte especial do título */
+        .font-title {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Estilo da barra de rolagem para combinar com o tema fofo */
         #chat-messages::-webkit-scrollbar {
             width: 8px;
         }
         #chat-messages::-webkit-scrollbar-track {
-            background: #27272a; /* bg-zinc-800 */
+            background: #f3e8ff; /* Fundo da barra de rolagem (violet-100) */
         }
         #chat-messages::-webkit-scrollbar-thumb {
-            background: #52525b; /* bg-zinc-600 */
-            border: 1px solid #18181b;
+            background: #c084fc; /* Cor da barra (violet-400) */
+            border-radius: 4px;
         }
         #chat-messages::-webkit-scrollbar-thumb:hover {
-            background: #a1a1aa; /* bg-zinc-400 */
+            background: #a855f7; /* Cor ao passar o mouse (violet-500) */
         }
     </style>
 </head>
-<body class="text-zinc-300 flex items-center justify-center h-screen p-4">
+<body class="flex items-center justify-center h-screen p-4">
 
-    <!-- Container principal com bordas retas e estilo de bloco -->
-    <div id="app-container" class="w-full max-w-2xl h-full bg-zinc-900/80 backdrop-blur-sm border-2 border-zinc-700 flex flex-col">
+    <!-- Container principal com efeito de vidro fosco para mostrar o degradê -->
+    <div id="app-container" class="w-full max-w-2xl h-full bg-white/60 backdrop-blur-lg rounded-2xl shadow-xl flex flex-col">
         
-        <!-- Cabeçalho com borda inferior, imitando um terminal -->
-        <header class="border-b-2 border-zinc-700 p-4 flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-bold text-green-400">TERMINAL.CHAT</h1>
-                <p class="text-xs text-zinc-500">// Sala Pública</p>
-            </div>
-            <div class="text-right">
-                 <p class="text-xs text-zinc-400">ID_USUARIO:</p>
-                 <span id="user-id" class="font-mono text-green-400">...</span>
-            </div>
+        <!-- Cabeçalho com nova fonte e sem subtítulo -->
+        <header class="border-b-2 border-violet-200/50 p-6 text-center">
+            <h1 class="font-title text-5xl font-bold text-violet-800">
+                Nosso Cantinho
+            </h1>
         </header>
 
-        <!-- Área de mensagens com fundo mais escuro -->
-        <main id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-black/20">
-            <!-- Spinner de carregamento com estilo de terminal -->
-             <div id="loading-spinner" class="flex items-center justify-center h-full text-green-400">
-                <i class="ph ph-circle-notch text-4xl animate-spin"></i>
-                <span class="ml-4">CONECTANDO AO HOST...</span>
+        <!-- Área de mensagens com fundo claro -->
+        <main id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4">
+             <div id="loading-spinner" class="flex flex-col items-center justify-center h-full text-violet-500">
+                <i class="ph-fill ph-heart text-5xl animate-pulse"></i>
+                <span class="mt-4 text-lg">Conectando nosso cantinho...</span>
             </div>
         </main>
 
         <!-- Rodapé e formulário de envio -->
-        <footer class="border-t-2 border-zinc-700 p-4 bg-zinc-900">
+        <footer class="border-t-2 border-violet-200/50 p-4 bg-white/50 rounded-b-2xl">
             <form id="message-form" class="flex items-center space-x-4">
-                <span class="text-green-400 font-bold">&gt;</span>
                 <input 
                     type="text" 
                     id="message-input" 
-                    placeholder="COMANDO_MSG::" 
+                    placeholder="Escreva uma mensagem..." 
                     autocomplete="off"
-                    class="flex-1 p-2 bg-transparent border-b-2 border-zinc-600 focus:border-green-400 text-zinc-200 placeholder-zinc-500 focus:outline-none transition-colors duration-300"
+                    class="flex-1 py-3 px-5 bg-violet-100 border-2 border-transparent rounded-full focus:border-violet-400 text-violet-800 placeholder-violet-400 focus:outline-none transition-colors duration-300"
                     required
                 >
                 <button 
                     type="submit" 
-                    class="bg-zinc-700 text-green-400 p-2 border-2 border-zinc-600 hover:bg-green-400 hover:text-zinc-900 focus:outline-none focus:bg-green-400 focus:text-zinc-900 transition-all duration-150 flex items-center justify-center w-12 h-12">
-                    <i class="ph-bold ph-arrow-elbow-down-left text-2xl"></i>
+                    class="bg-pink-400 text-white p-3 rounded-full hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-400 transition-all duration-150 flex items-center justify-center w-14 h-14 shadow-lg">
+                    <i class="ph-fill ph-heart text-3xl"></i>
                 </button>
             </form>
         </footer>
     </div>
 
-    <!-- Módulos do Firebase (sem alterações na lógica) -->
+    <!-- Módulos do Firebase (A lógica permanece a mesma) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-       const firebaseConfig = {
-  apiKey: "AIzaSyAwCdMjW7otJ9zkYQBSRiqa3SW7HQEjiyA",
-  authDomain: "chat-7ac83.firebaseapp.com",
-  projectId: "chat-7ac83",
-  storageBucket: "chat-7ac83.firebasestorage.app",
-  messagingSenderId: "1067244815405",
-  appId: "1:1067244815405:web:74764d25b23d3388bba4a4",
-  measurementId: "G-70P29NMB73"
-};
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-chat-app';
+        // Configuração do Firebase corrigida com suas chaves.
+        const firebaseConfig = {
+            apiKey: "AIzaSyAwCdMjW7otJ9zkYQBSRiqa3SW7HQEjiyA",
+            authDomain: "chat-7ac83.firebaseapp.com",
+            projectId: "chat-7ac83",
+            storageBucket: "chat-7ac83.firebasestorage.app",
+            messagingSenderId: "1067244815405",
+            appId: "1:1067244815405:web:74764d25b23d3388bba4a4",
+            measurementId: "G-70P29NMB73"
+        };
+        
+        const appId = 'default-chat-app'; // Usando um ID fixo para o caminho do Firestore
 
+        // --- Inicialização do Firebase (sem alterações na lógica) ---
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-
         let currentUserId = null;
-        let currentUserShortId = '...';
 
+        // --- Elementos do DOM ---
         const messageForm = document.getElementById('message-form');
         const messageInput = document.getElementById('message-input');
         const chatMessages = document.getElementById('chat-messages');
-        const userIdSpan = document.getElementById('user-id');
         const loadingSpinner = document.getElementById('loading-spinner');
 
+        // --- Lógica de Autenticação e Chat (CORRIGIDA) ---
         onAuthStateChanged(auth, async (user) => {
             if (user) {
+                // Se o usuário já está logado, configura o app
                 currentUserId = user.uid;
-                currentUserShortId = currentUserId.substring(0, 6).toUpperCase();
-                userIdSpan.textContent = currentUserShortId;
-                console.log("Usuário autenticado:", currentUserId);
                 listenForMessages();
             } else {
-                console.log("Nenhum usuário. Tentando autenticar...");
+                // Se não há usuário, tenta fazer o login anônimo diretamente.
                 try {
-                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                    } else {
-                        await signInAnonymously(auth);
-                    }
+                    await signInAnonymously(auth);
                 } catch (error) {
                     console.error("Erro na autenticação:", error);
-                    chatMessages.innerHTML = `<p class="text-red-500 text-center">FALHA NA CONEXÃO. ATUALIZE.</p>`;
+                    loadingSpinner.innerHTML = `<p class="text-red-500 text-center">Ops! Não conseguimos nos conectar. Tente atualizar a página.</p>`;
                 }
             }
         });
@@ -154,35 +146,28 @@
                 displayMessages(messages);
             }, (error) => {
                 console.error("Erro ao buscar mensagens: ", error);
-                chatMessages.innerHTML = `<p class="text-red-500 text-center">ERRO: Não foi possível carregar o log de mensagens.</p>`;
+                chatMessages.innerHTML = `<p class="text-red-500 text-center">Não foi possível carregar as mensagens. Verifique as regras do Firebase.</p>`;
             });
         }
 
         function displayMessages(messages) {
             chatMessages.innerHTML = '';
             if (messages.length === 0) {
-                 chatMessages.innerHTML = `<p class="text-zinc-500 text-center">// LOG DE MENSAGENS VAZIO //</p>`;
+                 chatMessages.innerHTML = `<p class="text-violet-400 text-center">Nenhuma mensagem ainda. Que tal um "oi"? 😊</p>`;
             } else {
                 messages.forEach(msg => {
                     const messageElement = document.createElement('div');
                     const isCurrentUser = msg.userId === currentUserId;
-                    const senderId = msg.userId ? msg.userId.substring(0, 6).toUpperCase() : 'ANONIMO';
-                    const timestamp = msg.createdAt ? new Date(msg.createdAt.seconds * 1000).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : '';
 
-                    // Define o conteúdo do balão de mensagem com estilo de log
-                    messageElement.className = `flex flex-col ${isCurrentUser ? 'items-end' : 'items-start'}`;
+                    // Define o estilo dos balões de mensagem
+                    messageElement.className = `w-full flex ${isCurrentUser ? 'justify-end' : 'justify-start'}`;
                     
-                    const senderClass = isCurrentUser ? 'text-green-400' : 'text-yellow-400';
+                    const bubbleColor = isCurrentUser ? 'bg-violet-500 text-white' : 'bg-gray-200 text-gray-800';
+                    const bubbleRounding = isCurrentUser ? 'rounded-t-2xl rounded-bl-2xl' : 'rounded-t-2xl rounded-br-2xl';
 
                     messageElement.innerHTML = `
-                        <div class="flex items-baseline gap-2 ${isCurrentUser ? 'flex-row-reverse' : ''}">
-                            <div class="border border-zinc-700 bg-zinc-800/50 p-2 max-w-xs md:max-w-md">
-                                <p class="whitespace-pre-wrap break-words">${escapeHTML(msg.text)}</p>
-                            </div>
-                            <div class="text-xs text-zinc-500 text-right">
-                                <span class="${senderClass}">${isCurrentUser ? 'VOCE' : senderId}</span>
-                                <span class="text-zinc-600">@${timestamp}</span>
-                            </div>
+                        <div class="max-w-xs md:max-w-md p-3 px-4 shadow-md ${bubbleColor} ${bubbleRounding}">
+                            <p class="break-words">${escapeHTML(msg.text)}</p>
                         </div>
                     `;
                     chatMessages.appendChild(messageElement);
